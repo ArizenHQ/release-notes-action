@@ -1,23 +1,28 @@
-# Hello world javascript action
+# release notes
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action gets a formated version of the commit messages between two commits
 
 ## Inputs
 
-### `who-to-greet`
+### `latest-release-tag`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The tag for the currently deployed release on production.
+
+### `release-candidate-tag`
+
+**Required** The tag for the release candidate going out to production
 
 ## Outputs
 
-### `time`
+### `notes`
 
-The time we greeted you.
+The formated release notes comprised of the commit messages.
 
 ## Example usage
 
-```yaml
-uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
+```
+uses: release_notes
 with:
-  who-to-greet: "Mona the Octocat"
+  latest-release-tag: '0.1.0'
+  release-candidate-tag: '0.2.0'
 ```

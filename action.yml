@@ -1,13 +1,15 @@
-name: "Hello World"
-description: "Greet someone and record the time"
+name: "Release Notes"
+description: "Retrieves release notes for a new release"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  latest-release-tag:
+    description: "The tag for the currently deployed release on production."
     required: true
-    default: "World"
+  release-candidate-tag:
+    description: "The tag for the release candidate going out to production"
+    required: true
 outputs:
-  time: # id of output
-    description: "The time we greeted you"
+  notes:
+    description: "The formated release notes comprised of the commit messages"
 runs:
   using: "node20"
-  main: "index.js"
+  main: "dist/index.js"
