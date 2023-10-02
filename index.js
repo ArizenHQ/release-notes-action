@@ -29,6 +29,10 @@ try {
     const dbMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/data | awk '{print $2}'`;
     const schemaMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/migrate | awk '{print $2}'`;
 
+    console.log("commitsCmd", commitsCmd);
+    console.log("dbMigrationsCmd", dbMigrationsCmd);
+    console.log("schemaMigrationsCmd", schemaMigrationsCmd);
+
     const commits = execSync(commitsCmd).toString();
     const dbMigrations = execSync(dbMigrationsCmd).toString();
     const schemaMigrations = execSync(schemaMigrationsCmd).toString();
