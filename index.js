@@ -26,8 +26,8 @@ try {
     execSync("git fetch --tags");
     //find diffs
     const commitsCmd = `git log --format="%s [merger: %an]" ^${oldestTag} ${newestTag}`;
-    const dbMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/data |awk '{print $newestTag}'`;
-    const schemaMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/migrate |awk '{print $newestTag}'`;
+    const dbMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/data | awk '{print $2}'`;
+    const schemaMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/migrate | awk '{print $2}'`;
 
     const commits = execSync(commitsCmd).toString();
     const dbMigrations = execSync(dbMigrationsCmd).toString();
