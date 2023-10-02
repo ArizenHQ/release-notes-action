@@ -21,7 +21,7 @@ The formated release notes comprised of the commit messages.
 ## Example usage
 
 ```
-uses: release_notes
+uses: ArizenHQ/release-notes-action@v1.0
 with:
   latest-release-tag: '0.1.0'
   release-candidate-tag: '0.2.0'
