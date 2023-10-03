@@ -10068,6 +10068,7 @@ try {
     const commitsCmd = `git log --format="%s [merger: %an]" ^${oldestTag} ${newestTag}`;
     const dbMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/data | awk '{print $2}'`;
     const schemaMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/migrate | awk '{print $2}'`;
+    const gitVersion = `git version`;
 
     console.log("commitsCmd", commitsCmd);
     console.log("dbMigrationsCmd", dbMigrationsCmd);
@@ -10076,6 +10077,9 @@ try {
     const commits = execSync(commitsCmd).toString();
     const dbMigrations = execSync(dbMigrationsCmd).toString();
     const schemaMigrations = execSync(schemaMigrationsCmd).toString();
+    const gitVersionOutput = execSync(gitVersion).toString();
+
+    console.log("gitVersionOutput", gitVersionOutput);
 
     let notes = `COMMITS\n=======\n\n${commits}`;
 
