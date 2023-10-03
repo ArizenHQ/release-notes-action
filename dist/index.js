@@ -10063,7 +10063,7 @@ try {
     console.log("Generate release notes");
     // get tags
     execSync("git config --global --add safe.directory /github/workspace");
-    execSync("git fetch --tags");
+    execSync("git fetch --tags >/dev/null 2>&1");
     //find diffs
     const commitsCmd = `git log --format="%s [merger: %an]" ^${oldestTag} ${newestTag}`;
     const dbMigrationsCmd = `git log --pretty=oneline ${newestTag}...${oldestTag}  --name-status | grep "^A\\s"|grep db/data | awk '{print $2}'`;
